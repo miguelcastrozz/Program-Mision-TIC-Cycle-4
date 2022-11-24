@@ -1,13 +1,12 @@
-class Truck {
+export default class Truck {
 
-    constructor(placa) {
-        this.placa = placa;
+    constructor(id, conductor) {
+        this.placa = id;
+        this.connductor = conductor;
     }
 
     transportar(lugar) {
-        console.log("El camión [" + this.placa + "] esta transportando el pedido a " + lugar);
+        console.log("El camión [" + this.placa + "] esta transportando el pedido a " + lugar + ", por medio terrestre");
     }
 
 }
-
-export default Truck;
