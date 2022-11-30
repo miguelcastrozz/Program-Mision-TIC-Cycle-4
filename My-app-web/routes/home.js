@@ -1,6 +1,7 @@
 // localhost:3000/home/...
 
 import express from "express";
+import {crearPublication, leerPublicaciones, leerPublication} from "../controllers/homeController.js";
 
 let router = express.Router();
 
@@ -12,21 +13,16 @@ router.get("/G01", (req, res) => {
     res.send("Bienvenido a la clase G01");
 });
 
-let publicaciones = [];
-
-router.post("/nueva", function (req, res){
-    let id = Math.random().toString(36).slice(2);
-    let publication = {
-        "Nuestra publication": req.body.publicacion, /* Lo que salga en el body de la petición */
-        "Identificador de la publication":id
-    }
-    res.json(publication);
-    publicaciones.push(publication); /* push: Agrega un elemento al final del arreglo */
+router.post("/nueva", function (req, res) {
+    crearPublication(req, res);
 });
 
-
 router.get("/lista", (req, res) => {
-    res.json(publicaciones);
+    leerPublicaciones(req, res)
+});
+
+router.get("/lista/:id", (req, res) => {
+    leerPublication(req, res)
 });
 
 export default router;
