@@ -37,8 +37,15 @@ router.get("/agrupar", (req, res) => {
 });
 
 router.get("/agrupar/:args", (req, res) => {
-    let nombres = req.params.args;
-    nombres = nombres.split(";"); /* split: Crea un arreglo con los elementos separados por el carácter que se le indique */
+    let nombres = req.params.args; /*
+    req: Extraer de la URL
+    res: Respuesta que se le va a dar al usuario
+    .params: Guarda los parámetros que pasan a la URL
+    .split: Crea un arreglo con los elementos separados por el carácter que se le indique
+    .args: El nombre del parámetro que se va a recibir
+    .send: Enviar mensaje como respuesta al usuario
+    .json: Enviar un objeto como respuesta al usuario */
+    nombres = nombres.split(";");
     res.send(nombres);
 });
 

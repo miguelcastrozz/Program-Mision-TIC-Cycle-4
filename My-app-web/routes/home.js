@@ -1,7 +1,7 @@
 // localhost:3000/home/...
 
 import express from "express";
-import {crearPublication, leerPublicaciones, leerPublication} from "../controllers/homeController.js";
+import { crearPublication, leerPublicaciones, leerPublication }  from "../controllers/homeController.js";
 
 let router = express.Router();
 
@@ -13,7 +13,7 @@ router.get("/G01", (req, res) => {
     res.send("Bienvenido a la clase G01");
 });
 
-router.post("/nueva", function (req, res) {
+router.post("/nuevo", function (req, res) {
     crearPublication(req, res);
 });
 
