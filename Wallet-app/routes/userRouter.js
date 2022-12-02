@@ -3,25 +3,22 @@ import { createUser, deleteUser, readUser, updateUser } from "../controllers/use
 
 const userRouter = express.Router()
 
-//CRUD
-//CREAR: POST
+// CRUD
+
 userRouter.post("/", (req, res) => {
-    createUser(res)
+    createUser(req, res);
 })
 
-//LEER: GET
 userRouter.get("/", (req, res) => {
-    readUser(res)
+    readUser(res);
 })
 
-//ACTUALIZAR: PUT / PATCH
-userRouter.patch("/", (req, res) => {
-    updateUser(res)
+userRouter.patch("/", (req, res) => { // put / patch
+    updateUser(res);
 })
 
-//ELIMINAR: DELETE
 userRouter.delete("/", (req, res) => {
-    deleteUser(res)
+    deleteUser(res);
 })
 
 export default userRouter

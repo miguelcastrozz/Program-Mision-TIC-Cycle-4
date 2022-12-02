@@ -1,6 +1,6 @@
 import express from "express";
-import UserRouter from "./routes/user.js";
-import homeRouter from "./routes/home.js";
+import userRouter from "./routes/userRouter.js";
+import homeRouter from "./routes/homeRouter.js";
 
 const app = express(); /* Instancia de servidor (express) */
 const puerto = 3000;
@@ -18,5 +18,5 @@ app.get("/direction", (req, res) => {
 });
 
 app.use(express.json()); /* express.json: Permite que el servidor entienda los datos que se envían en formato json */
-app.use("/usuario", UserRouter)
+app.use("/usuario", userRouter)
 app.use("/home", homeRouter)

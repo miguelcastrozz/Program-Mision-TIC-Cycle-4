@@ -8,4 +8,7 @@
 sendStatus: Código de estado de respuesta HTTP.
 Cunado se manda un código de estado de respuesta HTTP, se manda un mensaje de estado de respuesta HTTP, para finalizar la respuesta sin mensaje se usa .end().
 
-- No se pueden enviar dos respuestas
+- points - CRUD
+- Promesas: Un valor que no va devolver de manera inmediata, si no que tardara más
+- Aprender funciones Callback
+- Mejor Mongoose para schema(rigido) las bases de datos
