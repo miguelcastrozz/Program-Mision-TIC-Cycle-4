@@ -12,3 +12,11 @@ Cunado se manda un código de estado de respuesta HTTP, se manda un mensaje de e
 - Promesas: Un valor que no va devolver de manera inmediata, si no que tardara más
 - Aprender funciones Callback
 - Mejor Mongoose para schema(rigido) las bases de datos
+
+>  gt
+>= gte
+<  lt
+<= lte
+$in se encuentra en los siguientes valores
+$nin negación de in o la inversa de in
+$ne no igual 
