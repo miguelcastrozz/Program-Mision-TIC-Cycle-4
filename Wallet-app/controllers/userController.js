@@ -33,7 +33,7 @@ export async function updateUser(req, res) {
     const updates = req.body.updates;
     let documento;
     try {
-        documento = await userModel.updateOne({ "_id": id }, updates);
+        documento = await userModel.updateOne({ "_id": id }, updates, { runValidators: true });
     } catch (variable) {
         res.status(400).json(variable.message);
         return;

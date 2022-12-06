@@ -1,9 +1,13 @@
 import express from "express";
-import {createUser, readUser, updateUser, deleteUser} from "../controllers/userController.js"
+import { createUser, readUser, updateUser, deleteUser } from "../controllers/userController.js"
 
 const userRouter = express.Router();
 
 // CRUD = END POINTS
+
+userRouter.get("/mario", (req, res) => {
+    res.send("SOY MARIO");
+});
 
 userRouter.post("/", (req, res) => {
     createUser(req, res);
@@ -13,7 +17,7 @@ userRouter.get("/:id", (req, res) => {
     readUser(req, res);
 }); // READ
 
-userRouter.patch("/:id", (req, res) => { // put / patch
+userRouter.patch("/:id", (req, res) => { /* put / patch */
     updateUser(req, res);
 }); // UPDATE
 
