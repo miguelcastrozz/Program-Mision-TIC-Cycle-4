@@ -15,7 +15,7 @@ const datosUsuarios = [];
 app.post("/register", async (req, res) => {
     const { usuario, password } = req.body
     const salt = await bcrypt.genSalt(10) /* .genSalt: Diferenciar contraseñas, puede demorar mucho */
-    const passwordEncriptada = await bcrypt.hash(password, salt)
+    const passwordEncriptada = await bcrypt.hash(password, salt) /* .hash: Encriptar contraseña */
     datosUsuarios.push({
         usuario,
         passwordEncriptada

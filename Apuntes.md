@@ -20,3 +20,6 @@ Cunado se manda un código de estado de respuesta HTTP, se manda un mensaje de e
 $in se encuentra en los siguientes valores
 $nin negación de in o la inversa de in
 $ne no igual 
+>
+
+npm i corse

@@ -1,7 +1,9 @@
+import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
 import testRouter from "./routes/testRouter.js";
+import loginRouter from "./routes/LoginRouter.js";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -20,8 +22,10 @@ mongoose.connect("mongodb+srv://miguelcastrozz:5-n4QqR6dRVa_65@clusterchatu.tyhc
 
 // MIDDLEWARES
 
+app.use(cors({
+    origin: "http://localhost:3000" /* Dando permisos a la app de React mediante su puerto 3000 */
+}));
 app.use(express.json());
 app.use("/user", userRouter);
 app.use("/test", testRouter);
-
-// 07:10
+app.use("/login", loginRouter);

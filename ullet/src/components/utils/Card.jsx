@@ -1,5 +1,5 @@
 import React from "react";
-import "../card.css"
+import "../../sytlesheets/card.css"
 
 export default function Card(props) {
     const { children, padding, flexDirection, borderRadius } = props

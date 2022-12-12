@@ -1,9 +1,13 @@
 import userModel from "../models/userModel.js";
+import bcrypt from "bcrypt";
 
 export async function createUser(req, res) { /*
     const { nombre, edad, ciudad } = req.body.usuario; YA NO ES NECESARIO */
     const usuario = req.body.usuario;
-    if (usuario == null) {
+    const { contrasenia } = usuario;
+    const contraseniaEncriptada = await bcrypt.hash(contrasenia, 10); /* Encriptando la contraseña y la salt al mismo tiempo */
+    usuario.contrasenia = contraseniaEncriptada;
+    if (usuario === null) {
         res.status(400).json({ "error": "Falta objeto usuario en el cuerpo de la petición" });
         return;
     }

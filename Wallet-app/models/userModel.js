@@ -17,6 +17,7 @@ function validationPar(numero) {
 
 const userModel = mongoose.Schema({
     "nombre": { type: String,  required: true, minLength: 3, maxLength: 20 },
+    "contrasenia": { type: String, require: true},
     "edad":   { type: Number,  required: true, mim: 14, max: 90, validate: { validator: validationPar, message: "La edad debe debe ser par" } }, /* En caso de no ser par, se muestra el mensaje */
     "ciudad": { type: String,  required: true, enum: ciudadesPosibles },
     "correo": { type: String,  required: false, default: "anonimo@correo.com", unique: "true" }, /* enum: Solo permite estos valores */
