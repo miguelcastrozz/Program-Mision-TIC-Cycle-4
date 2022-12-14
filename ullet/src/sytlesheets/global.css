@@ -1,0 +1,13 @@
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.flex {
+    align-items: center;
+    background-color: gray;
+    display: flex;
+    justify-content: space-around;
+}

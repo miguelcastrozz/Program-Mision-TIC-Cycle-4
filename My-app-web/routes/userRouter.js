@@ -1,6 +1,7 @@
 // localhost:3000/usuario/...
 
 import express from "express";
+import {readUserList} from "../../Wallet-app/controllers/userController";
 
 const router = express.Router();
 
@@ -23,6 +24,8 @@ const usuario = {
 router.get("/", (req, res) => {
     res.json(usuario.mascota.edad);
 });
+
+router.get("/list", readUserList);
 
 router.get("/mascota", (req, res) => {
     res.json(usuario.mascota);

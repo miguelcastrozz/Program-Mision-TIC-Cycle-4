@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, readUser, updateUser, deleteUser } from "../controllers/userController.js"
+import {createUser, readUser, updateUser, deleteUser, readUserList} from "../controllers/userController.js"
 
 const userRouter = express.Router();
 
@@ -8,6 +8,8 @@ const userRouter = express.Router();
 userRouter.get("/mario", (req, res) => {
     res.send("SOY MARIO");
 });
+
+userRouter.get("/list", readUserList);
 
 userRouter.post("/", (req, res) => {
     createUser(req, res);

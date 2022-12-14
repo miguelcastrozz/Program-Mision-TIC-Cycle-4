@@ -1,10 +1,16 @@
 import React, {useState} from "react";
-import Button from "./components/forms/Button";
+import { Link, Route, Routes} from "react-router-dom"
 import "./assets/global.css"
+import Button from "./components/forms/Button";
 import Card from "./components/utils/Card";
 import Input from "./components/forms/Input";
 import Gap from "./components/utils/Gap";
-import Login from "./components/Login";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import NewUser from "./views/NewUser";
+import NavBar from "./components/NavBar";
+import User from "./views/User";
+import { Nav } from "./views/Nav";
 
 export default function App() {
 
@@ -20,10 +26,21 @@ export default function App() {
 
     return (
         <div>
-            <Login></Login>
-            <p>Contador: {contador}</p>
-            <Button onClick={incrementar}>Incrementar</Button>
-            <Button onClick={reiniciar}>Reiniciar</Button>
+            <nav>
+                <Link to="/">Home</Link><br/>
+                <Link to="/login">Login</Link><br/>
+                <Link to="/user">User</Link><br/>
+            </nav>
+                <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route path="/login" element={<Login />}></Route>
+                    <Route path="/user">
+                        <Route path="/user/" element={<User />}></Route>
+                        <Route path="/user/new" element={<NewUser />}></Route>
+                        <Route path="/user/:name" element={<User />}></Route>
+                    </Route>
+                    <Route path="*" element={<h1>404: Not found</h1>}></Route>
+                </Routes>
         </div>
     );
 
