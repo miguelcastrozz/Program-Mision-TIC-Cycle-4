@@ -1,11 +1,9 @@
 import "../../sytlesheets/forms.css";
 
-export default function input({ children, type, value, onChange }) {
+export default function input({ children, type, onChange, placeholder }) {
     return (
-        <input className="input"
-               type={type}
-               placeholder={children}
-               value={value}
-               onChange={onChange}
-        ></input>)
+        <label className="input" >{children}
+            <input type={type} onChange={onChange} placeholder={placeholder} ></input>
+        </label>
+    );
 }

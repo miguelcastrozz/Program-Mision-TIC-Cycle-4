@@ -1,0 +1,19 @@
+.login {
+    text-align: center;
+}
+
+.login .form {
+    gap: 1rem;
+    max-width: 20rem;
+    margin: 1rem auto;
+    flex-direction: column;
+}
+
+.login .tittle {
+    color: var(--text-color);
+    font-size: 30px;
+}
+
+.login .logo {
+    margin-top: 10rem;
+}

@@ -1,12 +1,12 @@
 import "../../sytlesheets/forms.css";
 
-export default function Button({children, onClick, type }) {
+export default function Button2({children, onClick, type }) {
     return (
         <button
-            className="button"
+            className="button-2"
             onClick={onClick}
             type={type}
-        ><b>{children}</b></button>)
+        >{children}</button>)
 }
 
 // alerta(): Ejecuta la función alerta

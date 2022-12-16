@@ -1,8 +1,10 @@
+import "./../sytlesheets/Login.css"
+
 import React, {useState} from "react";
-import Gap from "../components/utils/Gap";
 import Input from "../components/forms/Input";
 import Button from "../components/forms/Button";
-import Card from "../components/utils/Card";
+import Logo from "../assets/Logo";
+import {Link} from "react-router-dom";
 
 export default function Login() {
 
@@ -24,29 +26,15 @@ export default function Login() {
     const [ password, setPassword ] = useState("");
 
     return (
-        <form onSubmit={manejarEnvio}>
-            <Card padding="2rem" flexDirection="column" borderRadius="0.5rem">
-
-                <h1>Login</h1>
-
-                <Gap>1rem</Gap>
-
-                <Input
-                    onChange={(evento) => setUsuario(evento.target.value) } /* En el usuario se guarda el valor del input */
-                >User name</Input>
-
-                <Input
-                    type="password"
-                    onChange={(evento) => setPassword(evento.target.value) } /* En el usuario se guarda el valor del input */
-                >Contraseña</Input>
-
-                <Gap>1rem</Gap>
-
-                <Button
-                    type="submit"
-                >Ingresar</Button>
-            </Card>
-        </form>
+        <section className="login flex">
+            <Logo renderText={false} size="48px"/>
+            <p className="title">Iniciar sesión en <b>Ullet</b></p>
+            <form onSubmit={manejarEnvio} className="card form">
+                <Input onChange={(evento) => setUsuario(evento.target.value) } /* En el usuario se guarda el valor del input */ ><b>Nombre de usuario</b></Input>
+                <Input type="password" onChange={(evento) => setPassword(evento.target.value) } /* En el usuario se guarda el valor del input */ ><b>Contraseña</b></Input>
+                <Link to={"/panel"}><Button type="submit" >Ingresar</Button></Link>
+            </form>
+        </section>
     )
 
 }

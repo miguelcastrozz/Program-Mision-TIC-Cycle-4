@@ -1,9 +1,7 @@
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
-import userRouter from "./routes/userRouter.js";
-import testRouter from "./routes/testRouter.js";
-import loginRouter from "./routes/LoginRouter.js";
+import apiRouter from "./routes/apiRouter.js";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -25,7 +23,5 @@ mongoose.connect("mongodb+srv://miguelcastrozz:5-n4QqR6dRVa_65@clusterchatu.tyhc
 app.use(cors({
     origin: "http://localhost:3000" /* Dando permisos a la app de React mediante su puerto 3000 */
 }));
-app.use(express.json());
-app.use("/user", userRouter);
-app.use("/test", testRouter);
-app.use("/login", loginRouter);
+app.use(express.json()); /* Express puede entender JSON */
+app.use("/", apiRouter);

@@ -1,13 +1,66 @@
-* {
-    text-align: center;
+/* ✅ */
+
+:root {
+    --main-color: #1D3F6F;
+    --text-color: #404040;
+    --enf-color: #D4E8FF;
+    --default-radius: 0.3rem;
+    --default-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+}
+
+body {
     margin: 0;
     padding: 0;
-    outline: none;
+}
+
+body  * {
+    font-size: 16px;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 32px;
+    color: var(--main-color);
+}
+
+h2 {
+    font-size: 28px;
+    color: var(--main-color);
+}
+
+ul {
+    list-style: none;
+}
+
+b, a { /* Ambas etiquetas */
+    color: var(--main-color);
+    font-size: inherit; /* Hereda el tamaño de la etiqueta padre */
 }
 
 .flex {
-    align-items: center;
-    background-color: gray;
     display: flex;
-    justify-content: space-around;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.card {
+    border-radius: var(--default-radius);
+    box-shadow: var(--default-shadow);
+    padding: 1rem;
 }
