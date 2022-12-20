@@ -19,17 +19,6 @@ export async function createUser(req, res) {
     }
 }
 
-export async function readUser(req, res) {
-    const id = req.params.id;
-    let documento;
-    try {
-        documento = userModel.findOne({ "_id": id });
-    } catch (variable) {
-        res.status(400).json(variable.message); // TODO: Puede faltar un return [01:27:00]
-    }
-    res.status(200).json(documento);
-}
-
 export async function readUserList(req, res) {
     let documento;
     try {

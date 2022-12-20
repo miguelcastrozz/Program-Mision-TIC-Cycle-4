@@ -1,39 +1,40 @@
-import "./../sytlesheets/Login.css"
-
-import React, {useState} from "react";
+import "./../sytlesheets/Login.css";
+import React, {useContext, useState} from "react";
+import UserContext from "./../context/UserContext";
+import {useNavigate} from "react-router-dom";
 import Input from "../components/forms/Input";
 import Button from "../components/forms/Button";
 import Logo from "../assets/Logo";
-import {Link} from "react-router-dom";
+import {login} from "../services/authenticationService";
 
 export default function Login() {
 
-    async function manejarEnvio(evento) {
-        evento.preventDefault();
-        const res = fetch("http://localhost:8080/login", {
-            method: "GET",
-            mode: "cors", /* Método de seguridad para que no se pueda acceder a la API desde cualquier lugar */
-            headers: {
-                "Content-Type": "application.json", /* OBLIGATORIO: Indicar que el contenido es JSON */
-                user: usuario,
-                password: password
-            }
-        }) /* fetch = Petición http */
-        alert(res.message);
+    const {setUser} = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const [userInput, setUserInput] = useState("");
+    const [passwordInput, setPasswordInput] = useState("");
+
+    async function onButtonClick(e) {
+        e.preventDefault();
+        const token = await login(userInput, passwordInput);
+        if (token) {
+            setUser(userInput); /* Si el token existe, guardamos el usuario en el contexto */
+            navigate("/panel");
+        }
     }
 
-    const [ usuario, setUsuario ] = useState("");
-    const [ password, setPassword ] = useState("");
-
     return (
-        <section className="login flex">
-            <Logo renderText={false} size="48px"/>
-            <p className="title">Iniciar sesión en <b>Ullet</b></p>
-            <form onSubmit={manejarEnvio} className="card form">
-                <Input onChange={(evento) => setUsuario(evento.target.value) } /* En el usuario se guarda el valor del input */ ><b>Nombre de usuario</b></Input>
-                <Input type="password" onChange={(evento) => setPassword(evento.target.value) } /* En el usuario se guarda el valor del input */ ><b>Contraseña</b></Input>
-                <Link to={"/panel"}><Button type="submit" >Ingresar</Button></Link>
-            </form>
+        <section className="login">
+            <div className="container">
+                <Logo renderText={false} size="48px"/>
+                <p className="title">Iniciar sesión en <b>Ullet</b></p>
+                <form className="card form">
+                    <Input onChange={(e) => setUserInput(e.target.value)}><b>Nombre de usuario</b></Input>
+                    <Input onChange={(e) => setPasswordInput(e.target.value)} type="password"><b>Contraseña</b></Input>
+                    <Button onClick={onButtonClick} type="submit" >Ingresar</Button>
+                </form>
+            </div>
         </section>
     )
 
