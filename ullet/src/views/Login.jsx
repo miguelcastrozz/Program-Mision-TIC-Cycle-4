@@ -28,8 +28,8 @@ export default function Login() {
             setUser(userInput); /* Si el token existe, guardamos el usuario en el contexto */
             setToken(token);
             // Cookies
-            setCookies("token", token, {path: "/"}); /* Nombre de cookie que estableceremos, valor , options: /: toda la aplicación */
-            setCookies("user", userInput, {path: "/"});
+            setCookies("token", token, {path: "/", maxAge: 7 * 24 * 60 * 60}); /* Nombre de cookie que estableceremos, valor , options: /: toda la aplicación */
+            setCookies("user", userInput, {path: "/", maxAge: 7 * 24 * 60 * 60});
 
             navigate("/panel");
         }

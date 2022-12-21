@@ -12,7 +12,7 @@ export default function UserPanel() {
     const {token} = useContext(TokenContext);
     const [cookies, setCookies] = useCookies(["token", "user"]);
 
-    const usuarioActual = user ? user : cookies.user;
+    const usuarioActual = user ? user : cookies.user; /* Usuario de contexto o de cookies */
     const tokenActual = token ? token : cookies.token;
 
     const [documents, setDocuments] = useState([]);
