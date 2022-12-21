@@ -29,3 +29,15 @@ export async function login(req, res) {
         res.status(400).json(terrible.message);
     }
 }
+
+export async function validateToken(req, res, next) {
+    try {
+        const {token} = req.headers;
+        const _id = jwt.verify(token, privateKey)._id; /* token del header y la clave privada, y esto retorna un documento con la información del usuario como el ID, aquí también viene la IP */
+        const document = await userModel.findById((_id)); /* Consulta a la base de datos para ver si el usuario existe */
+        req.name = document.name; /* Guardar información del usuario en el request */
+        next();
+    } catch (e) {
+        res.status(401).json(e.message);
+    }
+}

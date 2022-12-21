@@ -1,26 +1,32 @@
 import "./../sytlesheets/PanelUsuario.css";
 import PanelTransaction from "./PanelTransaction";
 import {useContext, useEffect, useState} from "react";
-import UserContext from "./../context/UserContext";
+import UserContext from "../context/UserContext";
 import {useNavigate} from "react-router-dom";
+import {getTransactions} from "../services/transactionService";
+import TokenContext from "../context/TokenContext";
 
 export default function UserPanel() {
 
     const {user} = useContext(UserContext);
+    const {token} = useContext(TokenContext);
+    const [cookies, setCookies] = useCookies(["token", "user"]);
+
+    const usuarioActual = user ? user : cookies.user;
+    const tokenActual = token ? token : cookies.token;
 
     const [documents, setDocuments] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!user) { /* Cargando la página web. Si no hay usuario, redirigimos a la página de login */
+        if (!usuarioActual) { /* Cargando la página web. Si no hay usuario, redirigimos a la página de login */
             return navigate("/login")
         }
         fetchTransactions();
     }, []);
 
     async function fetchTransactions() {
-        const respuesta = await fetch("http://localhost:8080/api/transaction/" + user);
-        const documents = await respuesta.json();
+        const documents = await getTransactions(tokenActual);
         setDocuments(documents); /* Ahora actualizamos los documentos del fetch se encuentran en el estado guardado */
     }
 
@@ -36,7 +42,7 @@ export default function UserPanel() {
                 <h1>Mis movimientos</h1>
                 <div className="transactions card flex">{
                     documents.map((transaction) =>
-                        <PanelTransaction data={transaction} user={user} key={transaction._id} />
+                        <PanelTransaction data={transaction} user={usuarioActual} key={transaction._id} />
                     )}
                 </div>
             </div>

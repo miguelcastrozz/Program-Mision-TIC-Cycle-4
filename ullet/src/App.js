@@ -3,17 +3,17 @@ import {Route, Routes} from "react-router-dom";
 import "./assets/global.css"
 import Home from "./views/Home";
 import Login from "./views/Login";
-import UserPanel from "./views/userPanel";
+import UserPanel from "./views/UserPanel";
 import UserProvider from "./context/UserContext";
+import {TokenProvider} from "./context/TokenContext";
+import {CookiesProvider} from "react-cookie";
 
 export default function App() {
     return (
-        <div>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/login" element={<UserProvider><Login /></UserProvider>}/>
-                <Route path="/panel" element={<UserProvider><UserPanel /></UserProvider>}/>
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/login" element={<CookiesProvider><TokenProvider><UserProvider><Login/></UserProvider></TokenProvider></CookiesProvider>}/>
+            <Route path="/panel" element={<CookiesProvider><TokenProvider><UserProvider><UserPanel/></UserProvider></TokenProvider></CookiesProvider>}/>
+        </Routes>
     );
 }
