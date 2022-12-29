@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type = "text/javascript">
+            function obtenerDatos() {
+                var nombre1 = document.getElementById("nombre").value;
+                var edad1 = parseInt(document.getElementById("edad").value);
+                document.registro.nombreObtenida.value = nombre1;
+                document.registro.edadObtenida.value = edad1;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>¡Hola mundo!</h1>
+        <table border="1">
+            <tr>
+                <th>Nombre</th>
+                <th><input type = "text" name = "nombre" id = "nombre"></th>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <th><input type = "text" name = "edad" id = "edad"></th>
+            </tr>
+            <tr>
+                <td colspan = "2" ><input type = "button" name = "button1" value = "Enviar" onclick = obtenerDatos()></td>
+            </tr>
+        </table>
+        <table border="1">
+            <br><br>
+            <tr>
+                <th>Nombre</th>
+                <th><input type = "text" name = "nombre" id ="nombreObtenida"></th>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <th><input type = "text" name = "edad" id = "edadObtenida"></th>
+            </tr>
+            <tr>
+                <td colspan = "2" ><input type = "button" name = "button1" value = "Enviar"></td>
+            </tr>
+        </table>
+    </body>
+</html>
+
+<!--
+colspan: Se utiliza para indicar el número de columnas que se van a unir
+-->
